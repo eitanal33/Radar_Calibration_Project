@@ -7,7 +7,7 @@ from .custom_training_loop import train_step
 import tensorflow as tf
 
 
-def train_model(model, optimizer, false_radar_data, gps_data,radar_data,track_data, epochs=100):
+def train_model(model, optimizer, radar_data, gps_data, epochs=100):
     """
     Trains the model using the custom training loop.
 
@@ -20,13 +20,11 @@ def train_model(model, optimizer, false_radar_data, gps_data,radar_data,track_da
 
     Returns:
         loss_history (list): List of loss values recorded during training.
-        predicted_gps (np.ndarray): Predicted GPS coordinates from the model.
-        actual_gps (np.ndarray): Actual GPS coordinates from the dataset.
     """
     loss_history = []
 
     for epoch in range(epochs):
-        loss = train_step(model, optimizer, false_radar_data, gps_data,radar_data,track_data)
+        loss = train_step(model, optimizer, radar_data, gps_data)
         loss_history.append(loss.numpy())
 
         if epoch % 10 == 0:

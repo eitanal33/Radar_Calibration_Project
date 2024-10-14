@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+import os
 
 # Define fixed radar coordinates and azimuth
 utm_x_radar = 1000
@@ -51,7 +52,7 @@ utm_y_radar_false = utm_y_radar + delta_utm_y
 
 # Track data calculations
 range_ = np.sqrt((utm_x_gps - utm_x_radar) ** 2 + (utm_y_gps - utm_y_radar) ** 2)  # Step 1: Calculate range
-alpha = np.arctan2(utm_y_gps - utm_y_radar, utm_x_gps - utm_x_radar)  # Step 2: Calculate alpha (in radians)
+alpha = np.arctan2(utm_x_gps - utm_x_radar, utm_y_gps - utm_y_radar)  # Step 2: Calculate alpha (in radians)
 
 # Convert alpha to degrees
 alpha_degrees = np.degrees(alpha)
@@ -63,15 +64,15 @@ az_track = alpha_degrees + azimuth_radar
 az_track = np.mod(az_track, 360)
 
 # Step 4: Calculate the false UTM coordinates of the plot
-utm_x_plot = utm_x_radar_false + range_ * np.cos(np.radians(az_track))
-utm_y_plot = utm_y_radar_false + range_ * np.sin(np.radians(az_track))
+utm_x_plot = utm_x_radar_false + range_ * np.sin(np.radians(az_track))
+utm_y_plot = utm_y_radar_false + range_ * np.cos(np.radians(az_track))
 
 # Create DataFrames for radar, GPS, and track data
 radar_data = pd.DataFrame({
-    'utm_x_radar': [utm_x_radar] * (num_points - 1),
-    'utm_y_radar': [utm_y_radar] * (num_points - 1),
     'utm_x_radar_false': [utm_x_radar_false] * (num_points - 1),
     'utm_y_radar_false': [utm_y_radar_false] * (num_points - 1),
+    'r': range_,
+    'alpha': alpha_degrees,  # Angle in degrees
     'azimuth_radar': [azimuth_radar] * (num_points - 1),
 })
 
@@ -87,6 +88,12 @@ track_data = pd.DataFrame({
     'utm_x_plot': utm_x_plot,
     'utm_y_plot': utm_y_plot
 })
+
+
+
+radar_data.to_csv('radar_data.csv', index=False)
+gps_data.to_csv('gps_data.csv', index=False)
+track_data.to_csv('track_data.csv',index = False)
 
 # Print all the DataFrames
 print("Radar Data:")
@@ -111,3 +118,4 @@ plt.legend()
 plt.grid()
 plt.axis('equal')  # Equal scaling for both axes
 plt.show()
+

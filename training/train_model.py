@@ -32,7 +32,4 @@ def train_model(model, optimizer, false_radar_data, gps_data,radar_data,track_da
         if epoch % 10 == 0:
             print(f'Epoch {epoch}: Loss = {loss.numpy()}')
 
-    # Generate predictions using the trained model
-    predicted_gps = model.predict(radar_data)
-
-    return loss_history, predicted_gps, gps_data
+    return loss_history

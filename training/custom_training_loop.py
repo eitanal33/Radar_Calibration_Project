@@ -6,11 +6,19 @@ def custom_loss_function(utm_x_track, utm_y_track, utm_x_gps, utm_y_gps):
     #print(f'utm_y_track shape: {utm_y_track.shape}')
     #print(f'utm_x_gps shape: {utm_x_gps.shape}')
     #print(f'utm_y_gps shape: {utm_y_gps.shape}')
+    # Calculate the squared differences
+    squared_diff_x = tf.square(utm_x_track - utm_x_gps)
+    squared_diff_y = tf.square(utm_y_track - utm_y_gps)
 
-    loss = tf.reduce_mean(tf.sqrt(
-        tf.square(utm_x_track - utm_x_gps) + tf.square(utm_y_track - utm_y_gps))
-    )
-    return loss
+    # Calculate the Mean Squared Error
+    mse = tf.reduce_mean(squared_diff_x + squared_diff_y)
+
+    # Calculate RMSE
+    rmse = tf.sqrt(mse)
+    #loss = tf.sqrt(tf.reduce_mean(
+       # tf.square(utm_x_track - utm_x_gps) + tf.square(utm_y_track - utm_y_gps)
+    #))
+    return rmse
 
 
 def train_step(model, optimizer, inputs, gps_labels):

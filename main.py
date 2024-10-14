@@ -64,7 +64,7 @@ def train():
     optimizer = tf.keras.optimizers.Adam(learning_rate=0.01)
 
     # Train the model and get the loss history
-    loss_history = train_model(model, optimizer, radar_data, gps_data, epochs=10000)
+    loss_history = train_model(model, optimizer, radar_data, gps_data, epochs=80000)
 
     # Visualize the training loss
     plot_loss_history(loss_history)

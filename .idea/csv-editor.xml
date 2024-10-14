@@ -3,13 +3,6 @@
   <component name="CsvFileAttributes">
     <option name="attributeMap">
       <map>
-        <entry key="\data\deltas_data.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
         <entry key="\data\gps_data.csv">
           <value>
             <Attribute>
@@ -31,13 +24,6 @@
             </Attribute>
           </value>
         </entry>
-        <entry key="\data\radar_data_false.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
         <entry key="\data\radar_data_old.csv">
           <value>
             <Attribute>
@@ -53,27 +39,6 @@
           </value>
         </entry>
         <entry key="\data\true_paramaters.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="\gps_data.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="\radar_data.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="\simulated_track_data.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />

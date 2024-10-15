@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
-
+import io
+import tensorflow as tf
 def plot_loss_history(loss_history):
     """Plot the loss history over epochs."""
     plt.figure(figsize=(10, 6))
@@ -22,3 +23,21 @@ def plot_predicted_vs_actual_gps(predicted_gps, actual_gps):
     plt.legend()
     plt.grid(True)
     plt.show()
+
+def plot_tracks_as_image(gps_track, radar_track):
+    fig, ax = plt.subplots()
+    ax.plot(gps_track[:, 0], gps_track[:, 1], color='blue', label='GPS Track')
+    ax.plot(radar_track[:, 0], radar_track[:, 1], color='red', label='Radar Track')
+    ax.set_xlabel('UTM X Coordinate')
+    ax.set_ylabel('UTM Y Coordinate')
+    ax.set_title('Radar and GPS Tracking Visualization')
+    ax.legend(loc='upper right')
+
+    # Convert plot to image
+    buf = io.BytesIO()
+    plt.savefig(buf, format='png')
+    plt.close(fig)
+    buf.seek(0)
+    image = tf.image.decode_png(buf.getvalue(), channels=4)
+    image = tf.expand_dims(image, 0)  # Add batch dimension
+    return image

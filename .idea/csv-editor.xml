@@ -10,13 +10,6 @@
             </Attribute>
           </value>
         </entry>
-        <entry key="\data\gps_data_old.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
         <entry key="\data\radar_data.csv">
           <value>
             <Attribute>
@@ -24,7 +17,7 @@
             </Attribute>
           </value>
         </entry>
-        <entry key="\data\radar_data_old.csv">
+        <entry key="\data\radar_data_good1.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
@@ -32,13 +25,6 @@
           </value>
         </entry>
         <entry key="\data\track_data.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="\data\true_paramaters.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />

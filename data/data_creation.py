@@ -3,21 +3,18 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import os
 
-# Define fixed radar coordinates and azimuth
 utm_x_radar = 1000
 utm_y_radar = 2000
 azimuth_radar = 30  # Constant azimuth for the radar in degrees
 
 # Number of GPS points to generate
-num_points = 2000  # Increased to 2000
+num_points = 2000
 
-# Generate GPS coordinates to simulate a natural walking path
-# Start at a specific point and simulate small steps
 path_length = 100  # Total distance of the path
 step_size_mean = 1.0  # Mean step size
 step_size_std = 0.2  # Standard deviation for step size variation
 
-# Generate a natural path with more realistic direction changes
+# Generate a natural path with realistic direction changes
 gps_path_x = [utm_x_radar]
 gps_path_y = [utm_y_radar]
 
@@ -45,6 +42,7 @@ utm_y_gps = np.array(gps_path_y[1:])  # True GPS coordinates
 # Define known delta values for false radar coordinates
 delta_utm_x = 20
 delta_utm_y = -15
+delta_az = -0.8
 
 # Calculate false radar coordinates based on the radar's true position
 utm_x_radar_false = utm_x_radar + delta_utm_x
@@ -58,7 +56,7 @@ alpha = np.arctan2(utm_x_gps - utm_x_radar, utm_y_gps - utm_y_radar)  # Step 2: 
 alpha_degrees = np.degrees(alpha)
 
 # Step 3: Calculate az_track using the formula: az_track = alpha + az_radar
-az_track = alpha_degrees + azimuth_radar
+az_track = alpha_degrees + azimuth_radar + delta_az
 
 # Ensure azimuth is within 0-360 degrees
 az_track = np.mod(az_track, 360)
@@ -91,9 +89,9 @@ track_data = pd.DataFrame({
 
 
 
-radar_data.to_csv('radar_data.csv', index=False)
-gps_data.to_csv('gps_data.csv', index=False)
-track_data.to_csv('track_data.csv',index = False)
+#radar_data.to_csv('radar_data.csv', index=False)
+#gps_data.to_csv('gps_data.csv', index=False)
+#track_data.to_csv('track_data.csv',index = False)
 
 # Print all the DataFrames
 print("Radar Data:")

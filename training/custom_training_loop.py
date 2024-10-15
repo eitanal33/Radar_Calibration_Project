@@ -32,4 +32,4 @@ def train_step(model, optimizer, inputs, gps_labels):
         print("Warning: Gradients are not being computed correctly. Check model connections.")
 
     optimizer.apply_gradients(zip(gradients, model.trainable_variables))
-    return loss, deltas
+    return loss, deltas,utm_x_track,utm_y_track

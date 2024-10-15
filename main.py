@@ -12,7 +12,7 @@ from tensorflow.keras.callbacks import TensorBoard
 
 
 def train():
-    epochs = 100000
+    epochs = 2500
     log_dir = os.path.join("logs", "fit")
     if not os.path.exists(log_dir):
         os.makedirs(log_dir)

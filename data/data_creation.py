@@ -42,7 +42,7 @@ utm_y_gps = np.array(gps_path_y[1:])  # True GPS coordinates
 # Define known delta values for false radar coordinates
 delta_utm_x = 20
 delta_utm_y = -15
-delta_az = -0.8
+delta_az = -0.53
 
 # Calculate false radar coordinates based on the radar's true position
 utm_x_radar_false = utm_x_radar + delta_utm_x

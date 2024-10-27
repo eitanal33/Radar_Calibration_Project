@@ -88,7 +88,8 @@ The generated dataset and model predictions can be visualized using the included
 - The **Radar Plot** shows the radar-detected points after applying the delta corrections.
 
 ### Plot Example
-![Radar and GPS Track Visualization](utils/tensorboard_video_2024-10-15 15-28-01.mp4)
+[[Radar and GPS Track Visualization]](utils/tensorboard_video_2024-10-15_15-28-01.mp4)
+
 
 ## Results
 The neural network aims to reduce the error between the radar plot and GPS plot. The accuracy of the model is evaluated using Mean Squared Error (MSE), with improvements visualized using TensorBoard.
